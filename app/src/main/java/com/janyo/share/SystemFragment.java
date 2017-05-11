@@ -24,18 +24,15 @@ import android.widget.Toast;
 import java.io.IOException;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Adapter;
+import android.widget.LinearLayout;
+import android.util.Log;
 
 public class SystemFragment extends Fragment
 {
 	private View mView;
 	private ListView appListV;
 	private TextView appPath, appName,versionName;
-	private Context context;
-	
-	public SystemFragment(Context context)
-	{
-		this.context = context;
-	}
+	private LinearLayout ProgressBarLayout;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -52,12 +49,14 @@ public class SystemFragment extends Fragment
 				List<Map<String, Object>> applist = new ArrayList<Map<String, Object>>();
 				applist = new PM(getActivity()).getSystemAppList();
 				final SimpleAdapter sa = new SimpleAdapter(getActivity(), applist, R.layout.view_app_listview, new String[]{"Name", "Dir", "icon", "VersionName"}, new int[]{R.id.tv_app_name, R.id.tv_app_package_name, R.id.iv_app_icon, R.id.tv_app_version_name});
-				((Activity)context).runOnUiThread(new Runnable()
+				getActivity().runOnUiThread(new Runnable()
 					{
 
 						@Override
 						public void run()
 						{
+							ProgressBarLayout = (LinearLayout) mView.findViewById(R.id.ProgressBarLayout);
+							ProgressBarLayout.setVisibility(View.GONE);
 							appListV.setAdapter(sa);
 							sa.setViewBinder(new ViewBinder()
 								{
