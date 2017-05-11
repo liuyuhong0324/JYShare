@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<item
+        android:title="清除已复制的包" 
+		android:id="@+id/clear"/>
+	
+	<item
+		android:title="关于"
+		android:id="@+id/about"/>
+    
+</menu>
