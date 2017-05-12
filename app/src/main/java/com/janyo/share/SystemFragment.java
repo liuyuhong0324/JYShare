@@ -26,6 +26,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Adapter;
 import android.widget.LinearLayout;
 import android.util.Log;
+import com.janyo.share.util.FileToSD;
 
 public class SystemFragment extends Fragment
 {
@@ -99,6 +100,15 @@ public class SystemFragment extends Fragment
 				{
 					// TODO: Implement this method
 					Toast.makeText(getActivity(),"LongClick",Toast.LENGTH_SHORT).show();
+					appPath = (TextView)p2.findViewById(R.id.tv_app_package_name);
+					appName = (TextView)p2.findViewById(R.id.tv_app_name);
+					versionName = (TextView)p2.findViewById(R.id.tv_app_version_name);
+					try
+					{
+						new FileToSD(getActivity(), appPath.getText().toString(), appName.getText().toString(), versionName.getText().toString());
+					}
+					catch (IOException e)
+					{}
 					return true;
 				}
 
