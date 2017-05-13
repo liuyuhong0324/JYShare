@@ -16,7 +16,7 @@ public class FileToSD
 	{
 		this.context = context;
 		
-		File outFile = new File(Environment.getExternalStorageDirectory(),outputPath);
+		File outFile = new File(Environment.getExternalStoragePublicDirectory("JYShare"),outputPath);
 		InputStream is = new FileInputStream(inputPath);
 		FileOutputStream fos = new FileOutputStream(outFile+"_"+versionName+".apk");
 		byte[] Buff = new byte[1024];

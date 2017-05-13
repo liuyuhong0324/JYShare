@@ -14,9 +14,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import com.janyo.share.MainActivity;
 import com.janyo.share.util.CleanFileDir;
-import com.janyo.share.util.FileOperation;
-import com.janyo.share.util.Share;
-import java.io.IOException;
+import java.io.File;
+import android.os.Environment;
+import com.janyo.share.util.DirExist;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 		initView();
+		new DirExist("JYShare");
     }
 	
 	private void initView()

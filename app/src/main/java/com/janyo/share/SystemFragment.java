@@ -99,13 +99,14 @@ public class SystemFragment extends Fragment
 				public boolean onItemLongClick(AdapterView<?> p1, View p2, int p3, long p4)
 				{
 					// TODO: Implement this method
-					Toast.makeText(getActivity(),"LongClick",Toast.LENGTH_SHORT).show();
+					//Toast.makeText(getActivity(),"LongClick",Toast.LENGTH_SHORT).show();
 					appPath = (TextView)p2.findViewById(R.id.tv_app_package_name);
 					appName = (TextView)p2.findViewById(R.id.tv_app_name);
 					versionName = (TextView)p2.findViewById(R.id.tv_app_version_name);
 					try
 					{
 						new FileToSD(getActivity(), appPath.getText().toString(), appName.getText().toString(), versionName.getText().toString());
+						Toast.makeText(getActivity(),"已提取到手机储存/JYShare/"+appName.getText()+"_"+versionName.getText()+".apk",Toast.LENGTH_SHORT).show();
 					}
 					catch (IOException e)
 					{}
